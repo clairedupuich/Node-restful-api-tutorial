@@ -33,7 +33,7 @@ jobs:
 
     - name: Upload test report #上传测试报告
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  #更新到v4版本
       with:
         name: newman-report
         path: ./newman_test/reports/gestionItems.html #测试报告的真实路径
