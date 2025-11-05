@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:api": "newman run ./newman_test/collection.json --environment ./newman_test/environment.json",
-  "test:api:report": "newman run ./newman_test/collection.json --environment ./newman_test/environment.json -r htmlextra --reporter-htmlextra-export ./newman_test/reports/gestionItems.html"
+    "test:api:report": "newman run ./newman_test/collection.json --environment ./newman_test/environment.json -r htmlextra --reporter-htmlextra-export ./newman_test/reports/gestionItems.html"
   },
   "keywords": [
     "node",
@@ -17,5 +17,9 @@
   "dependencies": {
     "express": "^4.16.2",
     "nanoid": "^5.1.6"
+  },
+  "devDependencies": {
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
   }
 }
