@@ -27,9 +27,20 @@ jobs:
     - name: Start API server # 启动API服务器
       run: |                 #下面两行分别为 后台启动服务器 和 等待5秒确保服务启动
         npm start &       
-        sleep 5           
+        sleep 10       
+
     - name: Run Newman tests # 运行Newman API测试
-      run: npm run test:api:report || echo "Newman tests failed but continuing workflow"
+      env:
+       BASE_URL: http://localhost:3000
+      run: |
+       echo "Using base URL: $BASE_URL"
+       npx newman run ./newman_test/collection.json \
+         --environment ./newman_test/environment.json \
+         --env-var "baseUrl=${BASE_URL}" \
+         -r htmlextra --reporter-htmlextra-export ./newman_test/reports/gestionItems.html \
+         || echo "Newman tests failed but continuing workflow"
+   
+    
 
     - name: Upload test report #上传测试报告
       if: always()
