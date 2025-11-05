@@ -4,8 +4,8 @@
   "description": "A Node.js RESTful API Tutorial Project (Build a simple shop API)",
   "main": "index.js",
   "scripts": {
-    "test:api": "newman run collection.json --environment env.json",
-    "test:api:report": "newman run collection.json --environment environment.json -r htmlextra --reporter-htmlextra-export ./reports/gestionItems.html"
+    "test:api": "newman run ./newman_test/collection.json --environment ./newman_test/environment.json",
+  "test:api:report": "newman run ./newman_test/collection.json --environment ./newman_test/environment.json -r htmlextra --reporter-htmlextra-export ./newman_test/reports/gestionItems.html"
   },
   "keywords": [
     "node",

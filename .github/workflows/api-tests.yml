@@ -1,0 +1,45 @@
+name: API Tests // Tests d'API / API自动化测试
+
+on:
+  push:
+    branches: [ main ] #在 main 分支推送时触发
+  pull_request:
+    branches: [ main ] # 在 main 分支发起拉取请求时触发
+  schedule:
+    - cron: '0 8 * * *'  # Tous les jours à 8h / 每天早上8点自动执行一次
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest #在最新的Ubuntu环境中运行
+
+    steps:
+    - name: Checkout code  # 检出代码
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js #设置Node.js环境
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18' # Node版本
+
+    - name: Install dependencies # 安装依赖
+      run: npm ci
+
+    - name: Start API server # 启动API服务器
+      run: |                 #下面两行分别为 后台启动服务器 和 等待5秒确保服务启动
+        npm start &       
+        sleep 5           
+    - name: Run Newman tests # 运行Newman API测试
+      run: npm run test:api:report
+
+    - name: Upload test report #上传测试报告
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: newman-report
+        path: ./newman_test/reports/gestionItems.html #测试报告的真实路径
+
+    - name: Notify on failure #测试失败时通知
+      if: failure()
+      run: |                                            #测试失败，请查看报告 # 联系邮箱
+        echo "Tests échoués ! Consultez les rapports."   
+        echo "Contact: clairedupuich6@gmail.com"        
