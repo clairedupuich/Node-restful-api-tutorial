@@ -1,0 +1,21 @@
+{
+	"id": "c04993c6-4771-495a-b048-472e1252ee43",
+	"name": "API Tutoriel Academind",
+	"values": [
+		{
+			"key": "BASE_URL",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "lastId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-11-05T11:46:26.404Z",
+	"_postman_exported_using": "Postman/11.70.1"
+}

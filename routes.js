@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
 
 // 🇫🇷 Créer un nouvel item ./ 创建一个新项目（包含名称、描述、价格）。
 
-router.post('/', (req, res) => {
+router.post('/createItems', (req, res) => {
   const newItem = {
     id: nanoid(),
     name: req.body.name,
@@ -83,7 +83,8 @@ router.delete('/:id', (req, res) => {
 
   if (index !== -1) {
     items.splice(index, 1);
-    res.status(204).send(); //  Pas de contenu /  无内容返回
+    // res.status(204).send(); //  Pas de contenu /  无内容返回。正常情况下用这种，下面的用于教学更直观清晰。
+    res.status(200).json({ message: 'Item supprimé avec succès / 项目成功删除' });
   } else {
     res.status(404).json({ message: 'Item non trouvé / 未找到该项目' });
   }

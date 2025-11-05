@@ -13,8 +13,8 @@ app.use('/items', itemRoutes);
 // Route par défaut 
 // 默认路由（当没有匹配路径时）
 app.use((req, res, next) => {
-  res.status(200).json({
-    message: 'It works!',
+  res.status(404).json({
+    message: 'It works! (但该路径未定义)',
   });
 });
 
