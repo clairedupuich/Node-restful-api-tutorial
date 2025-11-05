@@ -83,8 +83,9 @@ router.delete('/:id', (req, res) => {
 
   if (index !== -1) {
     items.splice(index, 1);
-    // res.status(204).send(); //  Pas de contenu /  无内容返回。正常情况下用这种，下面的用于教学更直观清晰。
-    res.status(200).json({ message: 'Item supprimé avec succès / 项目成功删除' });
+    res.status(204).send(); //  Pas de contenu /  无内容返回。
+    // 正常情况下用上面这种，下面的用于教学更直观清晰。
+    // res.status(200).json({ message: 'Item supprimé avec succès / 项目成功删除' });
   } else {
     res.status(404).json({ message: 'Item non trouvé / 未找到该项目' });
   }
