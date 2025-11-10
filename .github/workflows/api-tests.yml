@@ -5,7 +5,7 @@ on:
     branches: [ main ] #在 main 分支推送时触发
   pull_request:
     branches: [ main ] # 在 main 分支发起拉取请求时触发
-  schedule:
+  schedule: 
     - cron: '0 8 * * *'  # Tous les jours à 8h / 每天早上8点自动执行一次
 
 jobs:
